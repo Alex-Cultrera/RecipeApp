@@ -26,14 +26,24 @@ public class FileService {
 		this.fileName = fileName;
 	}
 	
-	public void parseFile (String fileName) throws IOException {
+	public Iterable<CSVRecord> parseFile () throws IOException {
 		Reader in = new FileReader(fileName);
-		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withIgnoreSurroundingSpaces().parse(in);
+		Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
 		for (CSVRecord record : records) {
 			record.get(0);
 			record.get(1);
 		}
+		return records;
 	}
+
+//	public void parseFile (String fileName) throws IOException {
+//		Reader in = new FileReader(fileName);
+//		Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
+//		for (CSVRecord record : records) {
+//			record.get(0);
+//			record.get(1);
+//		}
+//	}
 	
 	public List<String> readFile () throws IOException {
 		return Files.readAllLines(Paths.get(fileName));	
