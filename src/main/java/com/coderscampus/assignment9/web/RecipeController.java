@@ -2,6 +2,7 @@ package com.coderscampus.assignment9.web;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,8 +34,8 @@ public class RecipeController {
 	}
 	
 	@GetMapping("")
-	public String sayHi() {
-		return "Hi";
+	public String sayHello() {
+		return "Hello";
 	}
 	
 	@GetMapping("/all-recipes")
@@ -42,12 +43,41 @@ public class RecipeController {
 		return recipeService.getAllRecipes();
 	}
 	
-//	@GetMapping("/gluten-free")
-//	@GetMapping("/vegan")
-//	@GetMapping("/vegan-and-gluten-free")
-//	@GetMapping("/vegetarian")
+	@GetMapping("/gluten-free")
+	public List<Recipe> getGlutenFreeRecipes() throws IOException {
+		List<Recipe> glutenFree;
+		glutenFree = recipeService.getAllRecipes().stream()
+												  .filter(recipe -> recipe.getGlutenFree().equals(true))
+												  .collect(Collectors.toList());
+		return glutenFree;
+	}
 	
+	@GetMapping("/vegan")
+	public List<Recipe> getVeganRecipes() throws IOException {
+		List<Recipe> vegan;
+		vegan = recipeService.getAllRecipes().stream()
+												  .filter(recipe -> recipe.getVegan().equals(true))
+												  .collect(Collectors.toList());
+		return vegan;
+	}
 	
+	@GetMapping("/vegan-and-gluten-free")
+	public List<Recipe> getVeganAndGlutenFreeRecipes() throws IOException {
+		List<Recipe> veganAndGlutenFree;
+		veganAndGlutenFree = recipeService.getAllRecipes().stream()
+												  .filter(recipe -> recipe.getVegan().equals(true))
+												  .filter(recipe -> recipe.getGlutenFree().equals(true))
+												  .collect(Collectors.toList());
+		return veganAndGlutenFree;
+	}
 	
+	@GetMapping("/vegetarian")
+	public List<Recipe> getVegetarianRecipes() throws IOException {
+		List<Recipe> vegetarian;
+		vegetarian = recipeService.getAllRecipes().stream()
+												  .filter(recipe -> recipe.getVegetarian().equals(true))
+												  .collect(Collectors.toList());
+		return vegetarian;
+	}
 	
 }
