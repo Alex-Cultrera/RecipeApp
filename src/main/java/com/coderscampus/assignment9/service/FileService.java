@@ -34,8 +34,6 @@ public class FileService {
 			for (CSVRecord record : records) {
 			    
 			    Recipe recipe = new Recipe();
-//			    RFC4180
-//			    "Cooking Minutes", "Dairy Free", "Gluten Free", "Instructions", "Preparation Minutes", "Price Per Serving", "Ready In Minutes", "Servings", "Spoonacular Score", "Title", "Vegan", "Vegetarian"
 				recipe.setCookingMinutes(Integer.parseInt(record.get("Cooking Minutes")));
 				recipe.setDairyFree(Boolean.parseBoolean(record.get("Dairy Free")));
 				recipe.setGlutenFree(Boolean.parseBoolean(record.get("Gluten Free")));
@@ -48,19 +46,6 @@ public class FileService {
 				recipe.setTitle(record.get("Title"));
 				recipe.setVegan(Boolean.parseBoolean(record.get("Vegan")));
 				recipe.setVegetarian(Boolean.parseBoolean(record.get("Vegetarian")));
-				
-//			    recipe.setCookingMinutes(Integer.parseInt(record.get(0)));
-//				recipe.setDairyFree(Boolean.getBoolean(record.get(1)));
-//				recipe.setGlutenFree(Boolean.getBoolean(record.get(2)));
-//				recipe.setInstructions(record.get(3));
-//				recipe.setPreparationMinutes(Double.valueOf(record.get(4)));
-//				recipe.setPricePerServing(Double.valueOf(record.get(5)));
-//				recipe.setReadyInMinutes(Integer.parseInt(record.get(6)));
-//				recipe.setServings(Integer.parseInt(record.get(7)));
-//				recipe.setSpoonacularScore(Double.valueOf(record.get(8)));
-//				recipe.setTitle(record.get(9));
-//				recipe.setVegan(Boolean.valueOf(record.get(10)));
-//				recipe.setVegetarian(Boolean.valueOf(record.get(11)));
 				
 				recipes.add(recipe);
 			}
@@ -75,78 +60,3 @@ public class FileService {
 			
 }
 	
-	
-//	public List<Recipe> importRecipesFromCSV (String fileName) throws IOException {
-//		List<Recipe> recipes = new ArrayList<>();
-//		
-//		try (Reader inboundData = new FileReader(fileName);
-//				CSVParser csvParser = new CSVParser(inboundData, CSVFormat.DEFAULT)) {
-//			List<CSVRecord> records = csvParser.getRecords();
-//			
-//			if(!records.isEmpty()) {
-//				
-//				for (int i = 1; i < records.size(); i++) {
-//					CSVRecord record = records.get(i);
-//					Recipe recipe = new Recipe();
-//					recipe.setCookingMinutes(Integer.parseInt(record.get(0)));
-//					recipe.setDairyFree(Boolean.getBoolean(record.get(1)));
-//					recipe.setGlutenFree(Boolean.getBoolean(record.get(2)));
-//					recipe.setInstructions(record.get(3));
-//					recipe.setPreparationMinutes(Double.valueOf(record.get(4)));
-//					recipe.setPricePerServing(Double.valueOf(record.get(5)));
-//					recipe.setReadyInMinutes(Integer.parseInt(record.get(6)));
-//					recipe.setServings(Integer.parseInt(record.get(7)));
-//					recipe.setSpoonacularScore(Double.valueOf(record.get(8)));
-//					recipe.setTitle(record.get(9));
-//					recipe.setVegan(Boolean.valueOf(record.get(10)));
-//					recipe.setVegetarian(Boolean.valueOf(record.get(11)));
-//					
-//					recipes.add(recipe);
-//				}
-//				
-//			} else {
-//				System.out.println("No records found.");
-//			}
-//		} catch (NumberFormatException e) {
-//			e.printStackTrace();
-//		}
-//		return recipes;
-//	}
-
-	
-
-//	public List<Recipe> importRecipesFromCSV (String fileName) throws IOException {
-//		
-//		List<Recipe> recipes = new ArrayList<>();
-//		
-//		Reader inboundData = new FileReader(fileName);
-//		List<String> records = inboundData.read;
-//			
-//			if((List<String>)records != null) {
-//				
-//				for (CSVRecord record : records) {
-//					Recipe recipe = new Recipe();
-//					recipe.setCookingMinutes(Integer.parseInt(record.get(0)));
-//					recipe.setDairyFree(Boolean.getBoolean(record.get(1)));
-//					recipe.setGlutenFree(Boolean.getBoolean(record.get(2)));
-//					recipe.setInstructions(record.get(3));
-//					recipe.setPreparationMinutes(Double.valueOf(record.get(4)));
-//					recipe.setPricePerServing(Double.valueOf(record.get(5)));
-//					recipe.setReadyInMinutes(Integer.parseInt(record.get(6)));
-//					recipe.setServings(Integer.parseInt(record.get(7)));
-//					recipe.setSpoonacularScore(Double.valueOf(record.get(8)));
-//					recipe.setTitle(record.get(9));
-//					recipe.setVegan(Boolean.valueOf(record.get(10)));
-//					recipe.setVegetarian(Boolean.valueOf(record.get(11)));
-//					
-//					recipes.add(recipe);
-//				}
-//				
-//			} else {
-//				System.out.println("No records found.");
-//			}
-//		
-//		return recipes;
-//	}
-//				
-//				
